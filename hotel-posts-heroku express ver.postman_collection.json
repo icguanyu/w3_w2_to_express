@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "14ae0239-887d-4df1-b4c4-dcb00d339de2",
+		"name": "hotel/posts-heroku express ver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得所有posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://murmuring-earth-71002.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"murmuring-earth-71002",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Express cool\",\r\n    \"description\": \"這裡是描述\",\r\n    \"content\": \"這裡是內容\",\r\n    \"author\": \"Nick Wu\",\r\n    \"scroe\": 90,\r\n    \"cover\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://murmuring-earth-71002.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"murmuring-earth-71002",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "'test'",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "編輯posts",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"回傳更新後的Express!!!!\",\r\n    \"content\": \"內容內容變更\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://murmuring-earth-71002.herokuapp.com/posts/62637680cc525f482c7c1332",
+					"protocol": "https",
+					"host": [
+						"murmuring-earth-71002",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"62637680cc525f482c7c1332"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://murmuring-earth-71002.herokuapp.com/posts/62636c4f6dfc19f38e349373",
+					"protocol": "https",
+					"host": [
+						"murmuring-earth-71002",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"62636c4f6dfc19f38e349373"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
