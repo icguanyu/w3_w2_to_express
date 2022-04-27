@@ -28,6 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/posts', postsRouter);
+app.use('/post', postsRouter);
 
 module.exports = app;

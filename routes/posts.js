@@ -16,12 +16,11 @@ router.post('/', async function (req, res, next) {
     const data = req.body
     const newPost = await Post.create(
       {
-        title: data.title,
-        description: data.description,
+        name: data.name,
         content: data.content,
-        author: data.ratting,
-        score: data.score,
-        cover: data.cover
+        type: data.type,
+        tags: data.tags,
+        image: data.image
       }
     )
     res.status(200).json({ newPost })
@@ -39,8 +38,18 @@ router.patch('/:id', async function (req, res, next) {
   // console.log('req.params', req.params);
   // console.log('req.body', req.body);
   try {
-    let post = await Post.findByIdAndUpdate(id, data, { new: true })
-    res.status(200).json({ post })
+    if (data.content && data.name) {
+      let post = await Post.findByIdAndUpdate(id, data, { new: true })
+      if (post !== null) {
+        res.status(200).json({ post })
+      } else {
+        res.status(400).json({ message: '文章不存在' })
+      }
+
+    } else {
+      res.status(400).json({ message: '文章不存在' })
+    }
+
   } catch (error) {
     res.status(400).json({
       message: '可能欄位錯誤哦'
@@ -48,15 +57,17 @@ router.patch('/:id', async function (req, res, next) {
   }
 })
 
-/* FELETE */
+/* DELETE */
 router.delete('/:id', async function (req, res, next) {
   const id = req.params.id
-  try {
-    await Post.findByIdAndDelete(id)
+  let post = await Post.findByIdAndDelete(id)
+
+  if (post !== null) {
     res.status(200).json({ message: '刪除成功' })
-  } catch (error) {
-    res.status(400).json(error)
+  } else {
+    res.status(400).json({ message: '找不到文章' })
   }
+
 })
 
 module.exports = router;
